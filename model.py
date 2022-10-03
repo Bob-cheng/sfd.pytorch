@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import torch.utils.model_zoo as model_zoo
 from torch import nn
-from torchvision.models.vgg import VGG, cfg, make_layers, vgg16
+from torchvision.models.vgg import VGG, cfgs, make_layers, vgg16
 
 from config import Config
 

@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from config import Config
 
 import xml.etree.ElementTree as ET

@@ -34,7 +34,14 @@ class Trainer(object):
         # initialize log
         self.log_dir = log_dir
         log_file = os.path.join(self.log_dir, 'log.txt')
-        logging.basicConfig(filename=log_file, level=logging.DEBUG)
+        # logging.basicConfig(filename=log_file, level=logging.DEBUG)
+        logging.basicConfig(
+            level=logging.DEBUG,
+            handlers=[
+                logging.FileHandler(log_file),
+                logging.StreamHandler(sys.stdout)
+            ]
+        )
         if not self.log_dir:
             self.log_dir = os.path.join(os.path.dirname(
                 os.path.realpath(__file__)), 'logs')

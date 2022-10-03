@@ -45,6 +45,9 @@ def create_wf_datasets(dataset_dir):
 
                 file_path = lines[cursor][:-1]
                 face_count = int(lines[cursor + 1])
+                if face_count == 0:
+                    cursor = cursor + 3
+                    continue
                 bboxes = lines[cursor + 2:cursor + face_count + 2]
 
                 coordinates = []
