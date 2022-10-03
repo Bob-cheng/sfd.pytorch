@@ -107,7 +107,7 @@ class Detector(object):
             reg_preds = torch.cat(prediction[::2])
             cls_preds = torch.cat(prediction[1::2])
 
-            anchors = torch.tensor(np.vstack(anchors))
+            anchors = torch.Tensor(np.vstack(anchors))
 
             result.append(self.convert_predictions(
                 torch.cat((reg_preds, cls_preds), dim=1),
@@ -119,7 +119,7 @@ class Detector(object):
         image = cv2.imread(image)
         image = image - np.array([104, 117, 123], dtype=np.uint8)
 
-        _input = torch.tensor(image).permute(2, 0, 1).float() \
+        _input = torch.Tensor(image).permute(2, 0, 1).float() \
             .to(device).unsqueeze(0)
 
         predictions = self.model(_input)
@@ -137,7 +137,7 @@ class Detector(object):
 
             predictions[index] = prediction.squeeze().view(prediction.size()[1], -1).permute(1, 0)
 
-        anchors = torch.tensor(np.vstack(anchors))
+        anchors = torch.Tensor(np.vstack(anchors))
         reg_preds = torch.cat(predictions[::2])
         cls_preds = torch.cat(predictions[1::2])
 

@@ -12,7 +12,7 @@ class Scale(nn.Module):
 
     def __init__(self, initialized_factor):
         super().__init__()
-        self.factor = torch.tensor(
+        self.factor = torch.Tensor(
             initialized_factor, requires_grad=True
         ).float().to(device)
         self.eps = 1e-10
@@ -25,7 +25,7 @@ class Scale(nn.Module):
 class Net(VGG):
 
     def __init__(self):
-        super().__init__(make_layers(cfg['D']))
+        super().__init__(make_layers(cfgs['D']))
 
         self.pool5 = self.features[30]
         self.conv_fc6 = self._conv_block(512, 1024)
