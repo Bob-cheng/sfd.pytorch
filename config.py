@@ -25,7 +25,7 @@ class Config(object):
     POSITIVE_ANCHOR_THRESHOLD = 0.3
     NEGATIVE_ANCHOR_THRESHOLD = 0.1
     LEAST_POSITIVE_ANCHOR_NUM = 100
-    LOSS_LOG_STRIDE = 1  # log loss every N iter
+    LOSS_LOG_STRIDE = 5  # log loss every N iter
     DATALOADER_WORKER_NUM = 1
     VGG16_PRETRAINED_WEIGHTS = "https://download.pytorch.org/models/vgg16-397923af.pth"
 

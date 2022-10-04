@@ -34,14 +34,14 @@ class Trainer(object):
         # initialize log
         self.log_dir = log_dir
         log_file = os.path.join(self.log_dir, 'log.txt')
-        # logging.basicConfig(filename=log_file, level=logging.DEBUG)
-        logging.basicConfig(
-            level=logging.DEBUG,
-            handlers=[
-                logging.FileHandler(log_file),
-                logging.StreamHandler(sys.stdout)
-            ]
-        )
+        logging.basicConfig(filename=log_file, level=logging.DEBUG)
+        # logging.basicConfig(
+        #     level=logging.INFO,
+        #     handlers=[
+        #         logging.FileHandler(log_file),
+        #         logging.StreamHandler(sys.stdout)
+        #     ]
+        # )
         if not self.log_dir:
             self.log_dir = os.path.join(os.path.dirname(
                 os.path.realpath(__file__)), 'logs')
@@ -223,6 +223,11 @@ class Trainer(object):
                             mode, self.current_epoch, index, total_iter, loss_class.data, loss_reg.data, loss.data
                         )
                     )
+                    print(
+                        "[{}][epoch:{}][iter:{}][total:{}] loss_class {:.8f} - loss_reg {:.8f} - total {:.8f}".format(
+                            mode, self.current_epoch, index, total_iter, loss_class.data, loss_reg.data, loss.data
+                        )
+                    )
 
                     if Config.TENSOR_BOARD_ENABLED and mode == 'train':
                         info = {
@@ -239,6 +244,10 @@ class Trainer(object):
                 # Log the scalar values
 
                 logging.info('[{}][epoch:{}] total_class_loss - {} total_reg_loss {} - total_loss {}'.format(
+                    mode, self.current_epoch, total_class_loss / total_iter, total_reg_loss / total_iter, total_loss / total_iter
+                ))
+
+                print('[{}][epoch:{}] total_class_loss - {} total_reg_loss {} - total_loss {}'.format(
                     mode, self.current_epoch, total_class_loss / total_iter, total_reg_loss / total_iter, total_loss / total_iter
                 ))
 
