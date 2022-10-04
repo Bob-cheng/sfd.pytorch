@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 
 def my_collate_fn(batch):
 
-    images = torch.stack(list(map(lambda x: torch.Tensor(x[0]).double(), batch)))
+    images = torch.stack(list(map(lambda x: torch.tensor(x[0]).double(), batch)))
     coordinates = list(map(lambda x: x[1], batch))
     pathes = list(map(lambda x: x[2], batch))
 

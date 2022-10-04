@@ -12,7 +12,7 @@ from config import Config
 from imageaug import crop_square, random_horizontal_flip
 
 def my_collate_fn(batch):
-    images = torch.stack(list(map(lambda x: torch.Tensor(x[0]), batch)))
+    images = torch.stack(list(map(lambda x: torch.tensor(x[0]), batch)))
     coordinates = list(map(lambda x: x[1], batch))
     pathes = list(map(lambda x: x[2], batch))
 

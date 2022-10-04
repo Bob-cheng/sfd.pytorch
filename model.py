@@ -12,8 +12,8 @@ class Scale(nn.Module):
 
     def __init__(self, initialized_factor):
         super().__init__()
-        self.factor = torch.Tensor(
-            initialized_factor
+        self.factor = torch.tensor(
+            initialized_factor, requires_grad=True
         ).float().to(device)
         self.eps = 1e-10
 

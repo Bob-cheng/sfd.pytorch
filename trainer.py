@@ -163,7 +163,7 @@ class Trainer(object):
                     neg_cls_preds = cls_preds[neg_indices]
                     neg_indices = torch.sort(neg_cls_preds[:, 0])[1][:n_neg_indices]
 
-                    pos_anchors = torch.Tensor(
+                    pos_anchors = torch.tensor(
                         self.anchors[pos_indices]
                     ).float().to(device)
 
@@ -171,7 +171,7 @@ class Trainer(object):
                     total_t.append(reg_preds[pos_indices])
 
                     gt_bboxes = change_coordinate(gt_bboxes)
-                    gt_bboxes = torch.Tensor(gt_bboxes).float().to(device)
+                    gt_bboxes = torch.tensor(gt_bboxes).float().to(device)
                     matched_bboxes = gt_bboxes[gt_bboxes_indices]
 
                     gtx = (matched_bboxes[:, 0] - pos_anchors[:, 0]) / pos_anchors[:, 2]
